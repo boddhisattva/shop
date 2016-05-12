@@ -20,5 +20,8 @@ until products_parsed_json_data["products"].empty?
   products.concat(products_parsed_json_data["products"])
 end
 
-store = Store.new(products)
-
+if products.count > 0
+  store = Store.new(products)
+else
+  puts "There aren't any products currently at the store"
+end
