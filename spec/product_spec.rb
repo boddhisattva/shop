@@ -7,10 +7,11 @@ describe Product do
 
     context "Given a product with id, title and variants" do
       it "should set the product related attributes appropriately" do
-        product = Product.new(2759196675, "Synergistic Bronze Pants", variants)
+        product = Product.new(2759196675, "Synergistic Bronze Pants", "Pants", variants)
 
         expect(product.id).to eq(2759196675)
         expect(product.title).to eq("Synergistic Bronze Pants")
+        expect(product.product_type).to eq("Pants")
         expect(product.variants.map(&:id)).to eq([8041889923, 8041889987])
       end
     end
