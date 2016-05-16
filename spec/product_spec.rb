@@ -12,7 +12,7 @@ describe Product do
         expect(product.id).to eq(2759196675)
         expect(product.title).to eq("Synergistic Bronze Pants")
         expect(product.product_type).to eq("Pants")
-        expect(product.variants.map(&:id)).to eq([8041889923, 8041889987])
+        expect(product.variants.map(&:price)).to match_array([38.94, 18.41])
       end
     end
   end
