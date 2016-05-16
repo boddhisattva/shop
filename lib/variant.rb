@@ -4,6 +4,6 @@ class Variant
   def initialize(id, title, product_id, price, grams, product_title)
     @id, @title, @product_id = id, title, product_id
     @price, @grams =  price.to_f, grams
-    @full_title = product_title.concat(" ").concat(title)
+    @full_title = product_title + " " + title
   end
 end
