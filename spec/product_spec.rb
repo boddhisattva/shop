@@ -9,8 +9,6 @@ describe Product do
       it "should set the product related attributes appropriately" do
         product = Product.new(2759196675, "Synergistic Bronze Pants", "Pants", variants)
 
-        expect(product.id).to eq(2759196675)
-        expect(product.title).to eq("Synergistic Bronze Pants")
         expect(product.product_type).to eq("Pants")
         expect(product.variants.map(&:price)).to match_array([38.94, 18.41])
       end
