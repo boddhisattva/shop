@@ -11,6 +11,6 @@ class ShoppingCart
   end
 
   def total_cost
-    products.collect(&:price).inject(0, :+)
+    products.collect(&:price).inject(0, :+).round(2)
   end
 end
