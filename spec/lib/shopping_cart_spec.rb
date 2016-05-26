@@ -33,4 +33,15 @@ describe ShoppingCart do
       end
     end
   end
+
+  describe "#products_title" do
+    context "Given a Shopping Cart with some products" do
+      it "should return full titles of all the products" do
+        shopping_cart = ShoppingCart.new(products, 1)
+
+        expect(shopping_cart.products_title).to eq(["Heavy Duty Concrete Keyboard Magenta",
+                                                   "Aerodynamic Cotton Keyboard Cyan"])
+      end
+    end
+  end
 end

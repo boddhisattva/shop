@@ -13,4 +13,8 @@ class ShoppingCart
   def total_cost
     products.collect(&:price).inject(0, :+).round(2)
   end
+
+  def products_title
+    products.map(&:full_title)
+  end
 end

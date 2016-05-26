@@ -74,7 +74,7 @@ private
   end
 
   def display_list(cart)
-    puts cart.products.map(&:full_title)
+    puts cart.products_title
     puts "Total cost of items - $#{cart.total_cost}"
     puts "Total weight of products in grams - #{cart.total_weight}"
   end
