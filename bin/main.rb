@@ -43,7 +43,7 @@ end
 products = get_initial_set_of_products
 
 if products.count > 0
-  customer = Customer.new('Alice', 1, 1000)
+  customer = Customer.new('Alice', 1)
   store = Store.new(products, customer)
   store.generate_shopping_list
 else
