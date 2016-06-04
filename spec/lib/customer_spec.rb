@@ -1,12 +1,11 @@
 describe Customer do
   describe "#initialize" do
 
-    context "Given a Customer with name, id and budget" do
+    context "Given a Customer with name and id" do
       it "should set the Customer related attributes appropriately" do
-        customer = Customer.new("Alice", 1, 1000)
+        customer = Customer.new("Alice", 1)
 
         expect(customer.id).to eq(1)
-        expect(customer.budget).to eq(1000)
       end
     end
   end
