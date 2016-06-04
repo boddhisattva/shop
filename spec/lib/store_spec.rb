@@ -2,7 +2,7 @@ describe Store do
   describe "#initialize" do
     context "Given a store with name, denomination and quantity" do
       it "should set the store related attributes appropriately" do
-        customer = Customer.new("Alice", 1, 1000)
+        customer = Customer.new("Alice", 1)
         parsed_products_data = {"products"=>[{"id"=>2759196675, "title"=>"Synergistic Bronze Pants",
                                               "handle"=>"synergistic-bronze-pants", "product_type"=>"Pants",
                                               "variants"=>[{"id"=>8041889923, "title"=>"Lavender", "option1"=>"Lavender", "price"=>"38.94",
@@ -21,7 +21,7 @@ describe Store do
   describe "#generate_shopping_list" do
     context "Given a store with certain products and a customer" do
       it "generates a shopping list" do
-        customer = Customer.new("Alice", 1, 20)
+        customer = Customer.new("Alice", 1)
         parsed_products_data = {"products"=>[{"id"=>2759196675, "title"=>"Aerodynamic Cotton Keyboard",
                                               "handle"=>"aerodynamic-cotton-keyboard", "product_type"=>"Keyboard",
                                               "variants"=>[{"id"=>8041889923, "title"=>"Lavender", "option1"=>"Lavender", "price"=>"9",
@@ -39,8 +39,10 @@ describe Store do
 
         shopping_output = "Aerodynamic Cotton Keyboard Yellow\n" <<
                           "Aerodynamic Linen Computer Cyan\n" <<
-                          "Total cost of items - $18.56\n" <<
-                          "Total weight of products in grams - 11120\n"
+                          "Aerodynamic Cotton Keyboard Lavender\n" <<
+                          "Aerodynamic Linen Computer Orchid\n" <<
+                          "Total cost of items - $39.91\n" <<
+                          "Total weight of products in grams - 21735\n"
 
         expect {store.generate_shopping_list}.to output(shopping_output).to_stdout
       end

@@ -15,10 +15,10 @@ class Store
   end
 
   def generate_shopping_list
-    keyboards, computers = get_product_variants
-    keyboards = sort_by_ascending_price(keyboards)
-    computers = sort_by_ascending_price(computers)
-    cart = add_to_cart(keyboards, computers)
+    keyboard_variants, computer_variants = get_product_variants
+    keyboard_variants = sort_by_ascending_price(keyboard_variants)
+    computer_variants = sort_by_ascending_price(computer_variants)
+    cart = add_to_cart(keyboard_variants, computer_variants)
     display_list(cart)
   end
 
@@ -46,30 +46,31 @@ private
     products.sort_by(&:price)
   end
 
-  def add_to_cart(keyboards, computers)
-    cart_items = get_equal_number_of_items(keyboards, computers)
+  def add_to_cart(type_a_variants, type_b_variants)
+    cart_items = get_equal_number_of_items(type_a_variants, type_b_variants)
     cart = ShoppingCart.new(cart_items, customer.id)
   end
 
-  def get_equal_number_of_items(keyboards, computers)
-    total_cost, cart_items = 0, []
+  def get_equal_number_of_items(type_a_variants, type_b_variants)
+    cart_items, count = [], 1
+    lesser_variants_product, more_variants_product = arrange_items_by_variants_count(type_a_variants, type_b_variants)
 
-    keyboards.each_with_index do |keyboard, index|
-      total_cost += keyboard.price + computers[index].price
-      if cost_within_customer_budget?(total_cost)
-        cart_items << keyboard
-        cart_items << computers[index]
+    while count <= lesser_variants_product.count
+      lesser_variants_product.each_with_index do |variant, index|
+        cart_items << variant
+        cart_items << more_variants_product[index]
+        count += 1
       end
     end
 
     cart_items
   end
 
-  def cost_within_customer_budget?(total_cost)
-    if customer.budget
-      total_cost <= customer.budget
+  def arrange_items_by_variants_count(type_a_variants, type_b_variants)
+    if type_a_variants.count <= type_b_variants.count
+      return type_a_variants, type_b_variants
     else
-      raise "Please specify customer budget to proceed with current transaction"
+      return type_b_variants, type_a_variants
     end
   end
 
