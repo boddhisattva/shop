@@ -47,13 +47,13 @@ private
   end
 
   def add_to_cart(type_a_variants, type_b_variants)
-    cart_items = get_equal_number_of_items(type_a_variants, type_b_variants)
+    lesser_variants_product, more_variants_product = arrange_items_by_variants_count(type_a_variants, type_b_variants)
+    cart_items = get_equal_number_of_items(lesser_variants_product, more_variants_product)
     cart = ShoppingCart.new(cart_items, customer.id)
   end
 
-  def get_equal_number_of_items(type_a_variants, type_b_variants)
+  def get_equal_number_of_items(lesser_variants_product, more_variants_product)
     cart_items, count = [], 1
-    lesser_variants_product, more_variants_product = arrange_items_by_variants_count(type_a_variants, type_b_variants)
 
     while count <= lesser_variants_product.count
       lesser_variants_product.each_with_index do |variant, index|
