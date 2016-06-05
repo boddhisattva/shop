@@ -32,8 +32,8 @@ class Store
     def get_product_variants
       keyboards = Product.filter_by_type(products, Customer::REQUIRED_PRODUCT_TYPES[0])
       computers = Product.filter_by_type(products, Customer::REQUIRED_PRODUCT_TYPES[1])
-      keyboard_variants = keyboards.collect(&:variants).flatten
-      computer_variants = computers.collect(&:variants).flatten
+      keyboard_variants = Product.collect_variants(keyboards)
+      computer_variants = Product.collect_variants(computers)
       [keyboard_variants, computer_variants]
     end
 

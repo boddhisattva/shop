@@ -12,6 +12,10 @@ class Product
     products.select { |product| product.product_type == type }
   end
 
+  def self.collect_variants(products)
+    products.collect(&:variants).flatten
+  end
+
   private
 
     def get_variants(product_title, product_variants)
