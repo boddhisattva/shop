@@ -30,15 +30,11 @@ class Store
     end
 
     def get_product_variants
-      keyboards = filter_products_by_type(Customer::REQUIRED_PRODUCT_TYPES[0])
-      computers = filter_products_by_type(Customer::REQUIRED_PRODUCT_TYPES[1])
+      keyboards = Product.filter_by_type(products, Customer::REQUIRED_PRODUCT_TYPES[0])
+      computers = Product.filter_by_type(products, Customer::REQUIRED_PRODUCT_TYPES[1])
       keyboard_variants = keyboards.collect(&:variants).flatten
       computer_variants = computers.collect(&:variants).flatten
       [keyboard_variants, computer_variants]
-    end
-
-    def filter_products_by_type(type)
-      products.select {|product| product.product_type == type}
     end
 
     def sort_by_ascending_price(product_variants)

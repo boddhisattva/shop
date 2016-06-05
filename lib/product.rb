@@ -8,6 +8,10 @@ class Product
     @variants = get_variants(title, product_variants)
   end
 
+  def self.filter_by_type(products, type)
+    products.select { |product| product.product_type == type }
+  end
+
   private
 
     def get_variants(product_title, product_variants)
