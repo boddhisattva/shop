@@ -1,8 +1,8 @@
 describe ShoppingCart do
-  let(:products) { [Variant.new(8041889923, "Magenta", 2759196675,
-                                14.30, 3030, "Heavy Duty Concrete Keyboard"),
-                    Variant.new(7045889239, "Cyan", 2759196675,
-                                6, 2730, "Aerodynamic Cotton Keyboard")] }
+  let(:products) { [Variant.new("Heavy Duty Concrete Keyboard", "id" => 8041889923, "title" => "Magenta",
+                                "product_id" => 2759196675, "price" => "14.30", "grams" => 3030, ),
+                    Variant.new("Aerodynamic Cotton Keyboard", "id" => 7045889239, "title" => "Cyan",
+                                "product_id" => 2759196675, "price" => "6", "grams" => 2730, )] }
 
   describe "#initialize" do
     context "Given a Shopping Cart with products and a customer id" do
