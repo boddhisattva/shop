@@ -1,27 +1,5 @@
 describe Store do
-  describe "#initialize" do
-    context "Given a store with name, denomination and quantity" do
-      it "should set the store related attributes appropriately" do
-        customer = Customer.new("Alice", 1)
-        parsed_products_data = { "products" => [{ "id" => 2759196675, "title" => "Synergistic Bronze Pants",
-                                                  "handle" => "synergistic-bronze-pants", "product_type" => "Pants",
-                                                  "variants" => [{ "id" => 8041889923, "title" => "Lavender", "option1" => "Lavender", "price" => "38.94",
-                                                                   "grams" => 4115, "product_id" => 2759196675 },
-                                                                 { "id" => 8041889987, "title" => "Yellow", "option1" => "Yellow", "price" => "18.41",
-                                                                   "grams" => 7770, "product_id" => 2759196675 }] }] }
-
-        store = Store.new(parsed_products_data["products"], customer)
-
-        expect(store.products.first.product_type).to eq("Pants")
-        expect(store.customer.id).to eq(1)
-      end
-    end
-  end
-
-  describe "#generate_shopping_list" do
-    context "Given a store with certain products and a customer" do
-      it "generates a shopping list" do
-        customer = Customer.new("Alice", 1)
+  let(:parsed_products_data) do
         parsed_products_data = { "products" => [{ "id" => 2759196675, "title" => "Aerodynamic Cotton Keyboard",
                                                   "handle" => "aerodynamic-cotton-keyboard", "product_type" => "Keyboard",
                                                   "variants" => [{ "id" => 8041889923, "title" => "Lavender", "option1" => "Lavender", "price" => "9",
@@ -34,6 +12,24 @@ describe Store do
                                                                    "grams" => 7000, "product_id" => 2757123675 },
                                                                  { "id" => 7041159987, "title" => "Orchid", "option1" => "Yellow", "price" => "12.35",
                                                                    "grams" => 6500, "product_id" => 2757123675 }] }] }
+  end
+
+  describe "#initialize" do
+    context "Given a store with name, denomination and quantity" do
+      it "should set the store related attributes appropriately" do
+        customer = Customer.new("Alice", 1)
+        store = Store.new(parsed_products_data["products"], customer)
+
+        expect(store.products.count).to eq(2)
+        expect(store.customer).not_to be_nil
+      end
+    end
+  end
+
+  describe "#generate_shopping_list" do
+    context "Given a store with certain products and a customer" do
+      it "generates a shopping list" do
+        customer = Customer.new("Alice", 1)
 
         store = Store.new(parsed_products_data["products"], customer)
 
