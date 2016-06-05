@@ -41,8 +41,8 @@ class Store
       products.select {|product| product.product_type == type}
     end
 
-    def sort_by_ascending_price(products)
-      products.sort_by(&:price)
+    def sort_by_ascending_price(product_variants)
+      product_variants.sort_by(&:price)
     end
 
     def add_to_cart(type_a_variants, type_b_variants)
