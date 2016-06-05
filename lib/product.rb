@@ -3,15 +3,14 @@ class Product
 
   def initialize(id, title, product_type, product_variants)
     @id, @title, @product_type = id, title, product_type
-    @variants = get_variants(product_variants, title)
+    @variants = get_variants(title, product_variants)
   end
 
   private
 
-    def get_variants(product_variants, title)
+    def get_variants(product_title, product_variants)
       product_variants.each_with_object([]) do |variant, variants|
-        variants << Variant.new(variant["id"], variant["title"], variant["product_id"],
-                                variant["price"], variant["grams"], title)
+        variants << Variant.new(product_title, variant)
       end
     end
 end

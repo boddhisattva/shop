@@ -1,7 +1,8 @@
 describe Variant do
   describe "#initialize" do
-    let(:variant) { Variant.new(8041889923, "Magenta", 2759196675,
-                                14.30, 3030, "Heavy Duty Concrete Keyboard") }
+    let(:product_title) { "Heavy Duty Concrete Keyboard" }
+    let(:variant) { Variant.new(product_title, "id" => 8041889923, "title" => "Magenta",
+                                "product_id" => 2759196675, "price" => "14.30", "grams" => 3030) }
 
     context "Given a Variant with id, title, product_id, price and weight in grams" do
       it "should set the variant related attributes appropriately" do
