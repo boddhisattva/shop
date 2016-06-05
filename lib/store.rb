@@ -3,9 +3,8 @@ require_relative './variant'
 require_relative './shopping_cart'
 
 class Store
-
-  BASE_URL = 'shopicruit.myshopify.com'
-  GET_PRODUCTS_API_ENDPOINT = '/products.json'
+  BASE_URL = 'shopicruit.myshopify.com'.freeze
+  GET_PRODUCTS_API_ENDPOINT = '/products.json'.freeze
 
   attr_reader :products, :customer
 

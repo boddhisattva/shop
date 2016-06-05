@@ -1,6 +1,5 @@
 class Customer
-
-  REQUIRED_PRODUCT_TYPES = ["Keyboard", "Computer"]
+  REQUIRED_PRODUCT_TYPES = ["Keyboard", "Computer"].freeze
 
   attr_reader :id
 
