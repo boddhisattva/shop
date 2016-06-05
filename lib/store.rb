@@ -53,14 +53,13 @@ class Store
 
     def get_equal_number_of_items(lesser_variants_product, more_variants_product)
       cart_items = []
-      count = 1
+      count = 0
+      lesser_variants_product_count = lesser_variants_product.count - 1
 
-      while count <= lesser_variants_product.count
-        lesser_variants_product.each_with_index do |variant, index|
-          cart_items << variant
-          cart_items << more_variants_product[index]
-          count += 1
-        end
+      while count <= lesser_variants_product_count
+        cart_items << lesser_variants_product[count]
+        cart_items << more_variants_product[count]
+        count += 1
       end
 
       cart_items
