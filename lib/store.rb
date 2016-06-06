@@ -15,8 +15,8 @@ class Store
 
   def generate_shopping_list
     keyboard_variants, computer_variants = get_product_variants
-    keyboard_variants = sort_by_ascending_price(keyboard_variants)
-    computer_variants = sort_by_ascending_price(computer_variants)
+    keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
+    computer_variants = Variant.sort_by_ascending_price(computer_variants)
     cart = add_to_cart(keyboard_variants, computer_variants)
     display_list(cart)
   end
@@ -35,10 +35,6 @@ class Store
       keyboard_variants = Product.collect_variants(keyboards)
       computer_variants = Product.collect_variants(computers)
       [keyboard_variants, computer_variants]
-    end
-
-    def sort_by_ascending_price(product_variants)
-      product_variants.sort_by(&:price)
     end
 
     def add_to_cart(type_a_variants, type_b_variants)

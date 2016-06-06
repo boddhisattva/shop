@@ -9,4 +9,8 @@ class Variant
     @grams = variant["grams"]
     @full_title = product_title + " " + @title
   end
+
+  def self.sort_by_ascending_price(product_variants)
+    product_variants.sort_by(&:price)
+  end
 end
