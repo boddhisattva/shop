@@ -1,20 +1,20 @@
 class ShoppingCart
-  attr_reader :products
+  attr_reader :items
 
-  def initialize(products, customer_id)
-    @products = products
+  def initialize(items, customer_id)
+    @items = items
     @customer_id = customer_id
   end
 
   def total_weight
-    products.collect(&:grams).inject(0, :+)
+    items.collect(&:grams).inject(0, :+)
   end
 
   def total_cost
-    products.collect(&:price).inject(0, :+).round(2)
+    items.collect(&:price).inject(0, :+).round(2)
   end
 
-  def products_title
-    products.map(&:full_title)
+  def items_title
+    items.map(&:full_title)
   end
 end

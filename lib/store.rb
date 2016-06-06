@@ -66,7 +66,7 @@ class Store
     end
 
     def display_list(cart)
-      puts cart.products_title
+      puts cart.items_title
       puts "Total cost of items - $#{cart.total_cost}"
       puts "Total weight of products in grams - #{cart.total_weight}"
     end
