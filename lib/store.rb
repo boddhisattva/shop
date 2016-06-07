@@ -14,11 +14,15 @@ class Store
   end
 
   def generate_shopping_list
-    keyboard_variants, computer_variants = get_product_variants
-    keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
-    computer_variants = Variant.sort_by_ascending_price(computer_variants)
-    cart = add_to_cart(keyboard_variants, computer_variants)
-    display_shopping_list(cart)
+    if products.any?
+      keyboard_variants, computer_variants = get_product_variants
+      keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
+      computer_variants = Variant.sort_by_ascending_price(computer_variants)
+      if keyboard_variants.any? && computer_variants.any?
+        cart = add_to_cart(keyboard_variants, computer_variants)
+        display_shopping_list(cart)
+      end
+    end
   end
 
   private
