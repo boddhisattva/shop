@@ -30,4 +30,12 @@ describe Variant do
       end
     end
   end
+
+  describe '.total_cost' do
+    context "Given a number of product variants" do
+      it "calculates the total cost of all those variants" do
+        expect(Variant.total_cost(variants)).to eq(25.6)
+      end
+    end
+  end
 end

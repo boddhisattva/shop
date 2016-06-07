@@ -13,4 +13,8 @@ class Variant
   def self.sort_by_ascending_price(product_variants)
     product_variants.sort_by(&:price)
   end
+
+  def self.total_cost(product_variants)
+    product_variants.collect(&:price).inject(0, :+)
+  end
 end
