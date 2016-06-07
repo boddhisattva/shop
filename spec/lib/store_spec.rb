@@ -1,17 +1,17 @@
 describe Store do
   let(:parsed_products_data) do
-        parsed_products_data = { "products" => [{ "id" => 2759196675, "title" => "Aerodynamic Cotton Keyboard",
-                                                  "handle" => "aerodynamic-cotton-keyboard", "product_type" => "Keyboard",
-                                                  "variants" => [{ "id" => 8041889923, "title" => "Lavender", "option1" => "Lavender", "price" => "9",
-                                                                   "grams" => 4115, "product_id" => 2759196675 },
-                                                                 { "id" => 8041889987, "title" => "Yellow", "option1" => "Yellow", "price" => "8.56",
-                                                                   "grams" => 4120, "product_id" => 2759196675 }] },
-                                                { "id" => 2757123675, "title" => "Aerodynamic Linen Computer",
-                                                  "handle" => "aerodynamic-linen-computer", "product_type" => "Computer",
-                                                  "variants" => [{ "id" => 7041299923, "title" => "Cyan", "option1" => "Lavender", "price" => "10",
-                                                                   "grams" => 7000, "product_id" => 2757123675 },
-                                                                 { "id" => 7041159987, "title" => "Orchid", "option1" => "Yellow", "price" => "12.35",
-                                                                   "grams" => 6500, "product_id" => 2757123675 }] }] }
+    parsed_products_data = { "products" => [{ "id" => 2759196675, "title" => "Aerodynamic Cotton Keyboard",
+                                              "handle" => "aerodynamic-cotton-keyboard", "product_type" => "Keyboard",
+                                              "variants" => [{ "id" => 8041889923, "title" => "Lavender", "option1" => "Lavender", "price" => "9",
+                                                               "grams" => 4115, "product_id" => 2759196675 },
+                                                             { "id" => 8041889987, "title" => "Yellow", "option1" => "Yellow", "price" => "8.56",
+                                                               "grams" => 4120, "product_id" => 2759196675 }] },
+                                            { "id" => 2757123675, "title" => "Aerodynamic Linen Computer",
+                                              "handle" => "aerodynamic-linen-computer", "product_type" => "Computer",
+                                              "variants" => [{ "id" => 7041299923, "title" => "Cyan", "option1" => "Lavender", "price" => "10",
+                                                               "grams" => 7000, "product_id" => 2757123675 },
+                                                             { "id" => 7041159987, "title" => "Orchid", "option1" => "Yellow", "price" => "12.35",
+                                                               "grams" => 6500, "product_id" => 2757123675 }] }] }
   end
 
   describe "#initialize" do
