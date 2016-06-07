@@ -21,4 +21,8 @@ class Variant
   def self.total_cost(variants)
     variants.collect(&:price).inject(0, :+)
   end
+
+  def self.get_full_title(variants)
+    variants.collect(&:full_title)
+  end
 end

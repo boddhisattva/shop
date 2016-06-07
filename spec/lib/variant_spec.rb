@@ -46,4 +46,13 @@ describe Variant do
       end
     end
   end
+
+  describe '.get_full_title' do
+    context "Given a number of variants" do
+      it "gets the full titles wrt all those variants" do
+        expect(Variant.get_full_title(variants)).to eq(["Heavy Duty Concrete Keyboard Magenta",
+                                                        "Heavy Duty Concrete Keyboard Lavender"])
+      end
+    end
+  end
 end

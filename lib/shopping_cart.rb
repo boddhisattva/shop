@@ -15,6 +15,6 @@ class ShoppingCart
   end
 
   def items_title
-    items.map(&:full_title)
+    Variant.get_full_title(items)
   end
 end
