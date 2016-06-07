@@ -18,7 +18,7 @@ class Store
     keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
     computer_variants = Variant.sort_by_ascending_price(computer_variants)
     cart = add_to_cart(keyboard_variants, computer_variants)
-    display_list(cart)
+    display_shopping_list(cart)
   end
 
   private
@@ -65,7 +65,7 @@ class Store
       end
     end
 
-    def display_list(cart)
+    def display_shopping_list(cart)
       puts cart.items_title
       puts "Total cost of items - $#{cart.total_cost}"
       puts "Total weight of products in grams - #{cart.total_weight_in_grams}"
