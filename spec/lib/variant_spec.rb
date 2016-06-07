@@ -38,4 +38,12 @@ describe Variant do
       end
     end
   end
+
+  describe '.total_weight_in_grams' do
+    context "Given a number of variants" do
+      it "calculates the total weight of all those variants in grams" do
+        expect(Variant.total_weight_in_grams(variants)).to eq(6060)
+      end
+    end
+  end
 end

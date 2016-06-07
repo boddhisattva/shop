@@ -21,7 +21,7 @@ describe ShoppingCart do
       it "should calculate the total weight related to those items" do
         shopping_cart = ShoppingCart.new(items, 1)
 
-        expect(shopping_cart.total_weight).to eq(5760)
+        expect(shopping_cart.total_weight_in_grams).to eq(5760)
       end
     end
   end
@@ -42,7 +42,7 @@ describe ShoppingCart do
         shopping_cart = ShoppingCart.new(items, 1)
 
         expect(shopping_cart.items_title).to eq(["Heavy Duty Concrete Keyboard Magenta",
-                                                   "Aerodynamic Cotton Keyboard Cyan"])
+                                                 "Aerodynamic Cotton Keyboard Cyan"])
       end
     end
   end

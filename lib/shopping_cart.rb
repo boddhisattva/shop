@@ -6,8 +6,8 @@ class ShoppingCart
     @customer_id = customer_id
   end
 
-  def total_weight
-    items.collect(&:grams).inject(0, :+)
+  def total_weight_in_grams
+    Variant.total_weight_in_grams(items)
   end
 
   def total_cost
