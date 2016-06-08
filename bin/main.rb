@@ -3,7 +3,6 @@ require "json"
 
 require_relative "../lib/store"
 require_relative "../lib/customer"
-require_relative "../lib/api"
 
 STARTING_PAGE_NUMBER = 1
 
