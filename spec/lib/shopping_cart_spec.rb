@@ -8,10 +8,10 @@ describe ShoppingCart do
 
   describe "#initialize" do
     context "Given a Shopping Cart with items and a customer id" do
-      it "should set the Shopping Cart related attributes appropriately" do
+      it "should set the shopping cart related attributes appropriately" do
         shopping_cart = ShoppingCart.new(items, 1)
 
-        expect(shopping_cart.items.map(&:grams)).to match_array([3030, 2730])
+        expect(shopping_cart.items.count).to eq(2)
       end
     end
   end
