@@ -16,9 +16,9 @@ class Store
   def generate_shopping_list
     if products.any?
       keyboard_variants, computer_variants = get_product_variants
-      keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
-      computer_variants = Variant.sort_by_ascending_price(computer_variants)
       if keyboard_variants.any? && computer_variants.any?
+        keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
+        computer_variants = Variant.sort_by_ascending_price(computer_variants)
         cart = add_to_cart(keyboard_variants, computer_variants)
         display_shopping_list(cart)
       end
