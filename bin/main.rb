@@ -1,9 +1,9 @@
-require 'net/http'
-require 'json'
+require "net/http"
+require "json"
 
-require_relative '../lib/store'
-require_relative '../lib/customer'
-require_relative '../lib/api'
+require_relative "../lib/store"
+require_relative "../lib/customer"
+require_relative "../lib/api"
 
 STARTING_PAGE_NUMBER = 1
 
@@ -43,7 +43,7 @@ end
 products = get_initial_set_of_products
 
 if products.count > 0
-  customer = Customer.new('Alice', 1)
+  customer = Customer.new("Alice", 1)
   store = Store.new(products, customer)
   store.generate_shopping_list
 else
