@@ -28,12 +28,12 @@ describe Product do
          "price" => "18.41", "grams" => 7770, "product_id" => 2759196675 }]
     end
 
-    context "Given a product with id, title and variants" do
+    context "Given a product with an id, title, product type and variants" do
       it "should set the product related attributes appropriately" do
         product = Product.new(2759196675, "Synergistic Bronze Pants", "Pants", variants)
 
         expect(product.product_type).to eq("Pants")
-        expect(product.variants.map(&:price)).to match_array([38.94, 18.41])
+        expect(product.variants.count).to eq(2)
       end
     end
   end
