@@ -33,12 +33,13 @@ describe Store do
           customer = Customer.new("Alice", 1)
           store = Store.new(parsed_products_data["products"], customer)
 
-          shopping_output = "Aerodynamic Cotton Keyboard Yellow\n" \
-                            "Aerodynamic Linen Computer Cyan\n" \
-                            "Aerodynamic Cotton Keyboard Lavender\n" \
-                            "Aerodynamic Linen Computer Orchid\n" \
-                            "Total cost of items - $39.91\n" \
-                            "Total weight of products in grams - 21735\n"
+          shopping_output = "Items purchased - \n\n" \
+                            "1. Aerodynamic Cotton Keyboard Yellow\n" \
+                            "2. Aerodynamic Linen Computer Cyan\n" \
+                            "3. Aerodynamic Cotton Keyboard Lavender\n" \
+                            "4. Aerodynamic Linen Computer Orchid\n" \
+                            "\nTotal cost of items - $39.91\n" \
+                            "\nTotal weight of products - 21735 grams\n"
 
           expect { store.generate_shopping_list }.to output(shopping_output).to_stdout
         end
@@ -60,10 +61,11 @@ describe Store do
           customer = Customer.new("Alice", 1)
           store = Store.new(parsed_products_data["products"], customer)
 
-          shopping_output = "Aerodynamic Linen Computer Cyan\n" \
-                            "Aerodynamic Cotton Keyboard Yellow\n" \
-                            "Total cost of items - $18.56\n" \
-                            "Total weight of products in grams - 11120\n"
+          shopping_output = "Items purchased - \n\n" \
+                            "1. Aerodynamic Linen Computer Cyan\n" \
+                            "2. Aerodynamic Cotton Keyboard Yellow\n" \
+                            "\nTotal cost of items - $18.56\n" \
+                            "\nTotal weight of products - 11120 grams\n"
 
           expect { store.generate_shopping_list }.to output(shopping_output).to_stdout
         end

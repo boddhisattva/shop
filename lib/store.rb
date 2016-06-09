@@ -70,8 +70,11 @@ class Store
     end
 
     def display_shopping_list(cart)
-      puts cart.items_title
-      puts "Total cost of items - $#{cart.total_cost}"
-      puts "Total weight of products in grams - #{cart.total_weight_in_grams}"
+      puts "Items purchased - \n\n"
+      cart.items_title.each.with_index(1) do |item_title, index|
+        puts "#{index}. #{item_title}"
+      end
+      puts "\nTotal cost of items - $#{cart.total_cost}"
+      puts "\nTotal weight of products - #{cart.total_weight_in_grams} grams"
     end
 end
