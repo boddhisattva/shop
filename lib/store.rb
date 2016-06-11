@@ -75,6 +75,6 @@ class Store
         puts "#{index}. #{item_title}"
       end
       puts "\nTotal cost of items - $#{cart.total_cost}"
-      puts "\nTotal weight of products - #{cart.total_weight_in_grams} grams"
+      puts "\nTotal weight of products - #{cart.total_weight} grams"
     end
 end

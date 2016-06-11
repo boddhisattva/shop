@@ -14,7 +14,7 @@ class Variant
     variants.sort_by(&:price)
   end
 
-  def self.total_weight_in_grams(variants)
+  def self.total_weight(variants)
     variants.collect(&:grams).inject(0, :+)
   end
 
