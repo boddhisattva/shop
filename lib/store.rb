@@ -9,7 +9,7 @@ class Store
   attr_reader :products, :customer
 
   def initialize(products, customer)
-    @products = get_products(products)
+    @products = initialize_products(products)
     @customer = customer
   end
 
@@ -27,7 +27,7 @@ class Store
 
   private
 
-    def get_products(products)
+    def initialize_products(products)
       products.each_with_object([]) do |product, items|
         items << Product.new(product["id"], product["title"], product["product_type"], product["variants"])
       end

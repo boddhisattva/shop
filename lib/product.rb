@@ -5,7 +5,7 @@ class Product
     @id = id
     @title = title
     @product_type = product_type
-    @variants = get_variants(title, product_variants)
+    @variants = initialize_variants(title, product_variants)
   end
 
   def self.filter_by_type(products, type)
@@ -18,7 +18,7 @@ class Product
 
   private
 
-    def get_variants(product_title, product_variants)
+    def initialize_variants(product_title, product_variants)
       product_variants.each_with_object([]) do |variant, variants|
         variants << Variant.new(product_title, variant)
       end
