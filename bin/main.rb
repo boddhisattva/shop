@@ -6,13 +6,20 @@ require_relative "../lib/customer"
 
 STARTING_PAGE_NUMBER = 1
 
-def get_initial_set_of_products
+def get_products
   products = []
+  products, products_parsed_json_data = get_initial_set_of_products(products)
+  unless products.empty?
+    get_remaining_products_from_other_pages(products, STARTING_PAGE_NUMBER, products_parsed_json_data)
+  end
+end
+
+def get_initial_set_of_products(products)
   products_json_data = query_resource(STARTING_PAGE_NUMBER)
   unless products_json_data.empty?
     products_parsed_json_data = parse_json(products_json_data)
     products.concat(products_parsed_json_data["products"])
-    get_remaining_products_from_other_pages(products, STARTING_PAGE_NUMBER, products_parsed_json_data)
+    [products, products_parsed_json_data]
   end
 end
 
@@ -39,7 +46,7 @@ def more_products_are_present?(products_parsed_json_data)
   products_parsed_json_data["products"].any?
 end
 
-products = get_initial_set_of_products
+products = get_products
 
 if products.count > 0
   customer = Customer.new("Alice", 1)
