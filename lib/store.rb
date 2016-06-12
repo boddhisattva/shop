@@ -19,7 +19,7 @@ class Store
       process_shopping_list_generation(keyboard_variants, computer_variants)
     else
       puts "There aren't enough variants in one or more product types to generate" \
-            " a shopping list with equal number of items from two product types\n"
+           " a shopping list with equal number of items from two product types\n"
     end
   end
 
