@@ -83,7 +83,10 @@ describe Store do
           customer = Customer.new("Alice", 1)
           store = Store.new(parsed_products_data["products"], customer)
 
-          expect(store.generate_shopping_list).to be_nil
+          shopping_output = "There aren't enough variants in one or more product types to generate" \
+                            " a shopping list with equal number of items from two product types\n"
+
+          expect { store.generate_shopping_list }.to output(shopping_output).to_stdout
         end
       end
     end

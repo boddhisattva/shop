@@ -14,14 +14,12 @@ class Store
   end
 
   def generate_shopping_list
-    if products.any?
-      keyboard_variants, computer_variants = get_product_variants
-      if keyboard_variants.any? && computer_variants.any?
-        keyboard_variants = Variant.sort_by_ascending_price(keyboard_variants)
-        computer_variants = Variant.sort_by_ascending_price(computer_variants)
-        cart = add_to_cart(keyboard_variants, computer_variants)
-        display_shopping_list(cart)
-      end
+    keyboard_variants, computer_variants = get_product_variants
+    if variants_present_in_both_product_types?(keyboard_variants, computer_variants)
+      process_shopping_list_generation(keyboard_variants, computer_variants)
+    else
+      puts "There aren't enough variants in one or more product types to generate" \
+            " a shopping list with equal number of items from two product types\n"
     end
   end
 
@@ -31,6 +29,17 @@ class Store
       products.each_with_object([]) do |product, items|
         items << Product.new(product["id"], product["title"], product["product_type"], product["variants"])
       end
+    end
+
+    def variants_present_in_both_product_types?(type_a_variants, type_b_variants)
+      type_a_variants.any? && type_b_variants.any?
+    end
+
+    def process_shopping_list_generation(type_a_variants, type_b_variants)
+      type_a_variants = Variant.sort_by_ascending_price(type_a_variants)
+      type_b_variants = Variant.sort_by_ascending_price(type_b_variants)
+      cart = add_to_cart(type_a_variants, type_b_variants)
+      display_shopping_list(cart)
     end
 
     def get_product_variants
