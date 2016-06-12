@@ -29,7 +29,7 @@ describe Product do
     end
 
     context "Given a product with an id, title, product type and variants" do
-      it "should set the product related attributes appropriately" do
+      it "should initialize product variants and set other product related attributes appropriately" do
         product = Product.new(2759196675, "Synergistic Bronze Pants", "Pants", variants)
 
         expect(product.product_type).to eq("Pants")

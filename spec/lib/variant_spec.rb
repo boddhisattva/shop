@@ -14,9 +14,10 @@ describe Variant do
   end
 
   describe "#initialize" do
-    context "Given a variant with certain attributes" do
-      it "should set the variant related attributes appropriately" do
+    context "Given a variant with a product title and other variant related attributes" do
+      it "should set the full title, price in float and other attributes as properties of a variant" do
         expect(variant.price).to eq(14.30)
+        expect(variant.price).to be_instance_of(Float)
         expect(variant.grams).to eq(3030)
         expect(variant.full_title).to eq("Heavy Duty Concrete Keyboard Magenta")
       end

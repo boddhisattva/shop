@@ -16,7 +16,7 @@ describe Store do
 
   describe "#initialize" do
     context "Given a store with a customer and some products" do
-      it "should set the store related attributes appropriately" do
+      it "should initialize products and set other store related attributes appropriately" do
         customer = Customer.new("Alice", 1)
         store = Store.new(parsed_products_data["products"], customer)
 
