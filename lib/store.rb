@@ -72,9 +72,9 @@ class Store
 
     def arrange_items_by_variants_count(type_a_variants, type_b_variants)
       if type_a_variants.count <= type_b_variants.count
-        return type_a_variants, type_b_variants
+         [type_a_variants, type_b_variants]
       else
-        return type_b_variants, type_a_variants
+         [type_b_variants, type_a_variants]
       end
     end
 
