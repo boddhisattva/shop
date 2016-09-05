@@ -1,6 +1,6 @@
 ## About
 
-This is a program to meet Alice's shopping related requirements in order to organize a hackathon.
+This is a program to meet Alice's shopping related requirements in order to organize a hackathon. Alice needs to shop for these items from the [Shopicruit store](http://shopicruit.myshopify.com/).
 
 The checklist of her requirements include:
 
