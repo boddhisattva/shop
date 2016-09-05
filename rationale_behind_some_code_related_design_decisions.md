@@ -1,0 +1,20 @@
+## About
+
+This document is an attempt to share some reasons as to why the code is structured in a particular fashion.
+
+#### Reasons behind why certain parts of the code are structured in a particular way
+
+* Initially, in `store.rb`, we were getting the variants that belong to a collection of products using code that looks like `products.collect(&:variants).flatten`. Let's assume that collection of products is a set of `keyboards`. The code mentioned previously was eventually refactored to `Product.collect_variants(keyboards)`(as mentioned in `get_product_variants` method of `store.rb`). Some of the reasons behind this refactoring -
+  * If we go with the former approach, `Store` class would know about one of the internal attributes of a product(which in this case is `variants`). This shouldn't generally be the case because -
+    * A class should just know enough to do it's job.
+    * Tomorrow, if any of the attributes of a `Product` class changes, we'd have to make relevant changes within the `Store` class also. Ideally, we'd want to make all the property related changes wrt a given class, within that particular class itself. Also, usually, whenever we change internal attributes of a class, we generally don't expect those internal attributes of a class(in which it's originally defined) to be present elsewhere in other classes or in the test related files wrt the other classes. In order to avoid making extra changes in multiple places, we encapsulate this information within the `Product` class.
+  * Also, by placing the logic that is used to get the variants of a collection of products, in a method(which in this case is `self.collect_variants(products)` as defined in `product.rb`), we make the method reusable in a way that it can be used to get variants of any set of products(be it those products belong to the same product type or not) and the class method(`self.collect_variants(products)`) wrt the `Product` class could be called from any other class.
+
+* Based on similar reasonings as present above, in order to sort variants by ascending order of price, we don't do `variants.sort_by(&:price)`(as part of `process_shopping_list_generation` method in `store.rb`), instead we get the required information via `Variant.sort_by_ascending_price(type_a_variants)`.
+
+* Initially, the total weight of all product variants that Alice wanted to purchase was calculated within the `Store` class using `cart.items.collect(&:weight).inject(0, :+)`(as part of the `display_shopping_list` method defined in `store.rb`) but this was refactored into a `total_weight` instance method in `shopping_cart.rb` which eventually calls `Variant.total_weight(items)` in order to get the total weight of all cart items. Some of the reasons behind this refactoring -
+  * Calculating the total cost is the responsibility of a Shopping Cart(as also generally seen when making an online purchase), similarly, the shopping cart would be a more appropriate place where one should calculate the total weight from.
+  * Store was knowing way too much about `Shopping Cart` and `Variant` and for reasons mentioned in the first point above this is generally not a good idea.
+  * Also, if we use the former approach, this would violate the law of demeter.
+
+* As part of displaying the final output wrt a shopping list that meets Alice's requirements, we don't do a `Variant.get_full_title(cart.items)` within `display_shopping_list` method(defined in `store.rb`) because we don't want `Store` class to know about the internal attribute of the `Shopping Cart` class(which in this case is `items`). Instead, we do a `cart.items_title`. This refactoring follows the reasonings mentioned wrt the first point above.
