@@ -1,6 +1,6 @@
 ## About
 
-This is a program to meet Alice's shopping related requirements in order to organize a hackathon. Alice needs to shop for these items from the [Shopicruit store](http://shopicruit.myshopify.com/).
+This is a program to meet Alice's shopping related requirements in order to organize a hackathon. Alice needs to shop for these items from the [Shopicruit store](http://shopicruit.myshopify.com/). Please consider reading [this document](https://github.com/boddhisattva/shop/blob/master/rationale_behind_some_code_related_design_decisions.md) for the rationale behind some code related design decisions as part of this application
 
 The checklist of her requirements include:
 
